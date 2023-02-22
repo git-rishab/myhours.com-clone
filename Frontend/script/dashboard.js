@@ -187,14 +187,14 @@ document.getElementById("user2").addEventListener("click", () => {
 
     // Fetching data of members
 
-    // var wrapper = document.querySelector('body');
-    // document.addEventListener('click', (e)=> {
-    //     if (!wrapper.contains(e.target) ) {
-    //         // Do something when user clicked outside of wrapper element
-    //         document.getElementById("member-box").style.visibility = "hidden";
-    //         console.log("HI");
-    //     }
-    // })
+    var wrapper = document.querySelector('body');
+    document.addEventListener('click', (e)=> {
+        if (!wrapper.contains(e.target) ) {
+            // Do something when user clicked outside of wrapper element
+            document.getElementById("member-box").style.visibility = "hidden";
+            console.log("HI");
+        }
+    })
 })
 
 // Show Projects
