@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./images/logo.png">
+    <link rel="stylesheet" href="./styles/loginPage.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>Signin - Work Flow</title>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div>
+            <div id="logo" onclick="location.href=`./index.html`">
+                <img src="./images/logo.png" alt="logo">
+            </div>
+            <div>
+                <div>How it Works</div>
+                <div>Pricing</div>
+                <div onclick="location.href=`./loginPage.html`">Sign in</div>
+                <div onclick="location.href=`./registerPage.html`">Get Work Flow Free </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Div -->
+    <div id="child2">
+        <div class="strong"><strong>Sign in</strong></div>
+        <form id="form">
+
+            <label for="email"> <span>Email ID / Username</span></label>
+            <input type="email" name="email" id="email" placeholder="Enter Email ID / Username" required/>
+
+            <label for="pass"><span>Password</span></label>
+            <input type="password" name="pass" id="pass" placeholder="Enter Password" required/>
+            <p>Forgot Password?</p>
+
+            <input type="submit" id="submit" id="btn" value="Sign in">
+
+            <hr style="margin: 40px 0px 30px 15%; width: 70%;">
+            <div id="new" onclick="location.href=`./registerPage.html`"><u>New to Work Flow? Sign up</u></div>
+        </form>
+    </div>
+
+    <!-- Loader -->
+    <div class="boxes">
+        <div class="box">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="box">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="box">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="box">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</body>
+<script src="./script/loginPage.js"></script>
+</html>

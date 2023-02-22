@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="./styles/dashboard.css">
+    <title>Weekly Timesheet - Work Flow</title>
+</head>
+<body>
+    <!-- Side Panel -->
+    <div id="side-panel">
+        <div id="logo"><img src="./images/logo.png" alt="logo"></div>
+        <div onclick="location.href=`./dashboard.html`" style="background-color: #DEE2E6;"><img src="./images/track.png" alt="track"> Track</div>
+        <div onclick="location.href=`./project.html`"><img src="./images/project.png" alt="projects"> Projects</div>
+        <div onclick="location.href=`./team.html`"><img src="./images/team.png" alt="team"> Team</div>
+        <div> <img src="./images/report.png" alt="reports"> Reports</div>
+        <div id="user">
+            <img src="./images/user.png" alt="user">
+            <!-- User Name Here-->
+            User
+        </div>
+    </div>
+
+    <div id="main-body">
+        <div id="child">
+            <div>
+                <h1>Weekly timesheet</h1>
+            </div>
+    
+            <div id="calender-body">
+    
+                <div id="calender">
+                    <div class="calender" id="left-arrow" style="border-right: 1px solid #DEE2E6;"><img src="./images/left-arrow.png" alt="left-arrow"></div>
+                    <div class="calender" style="border: none;"><img src="./images/calendar.png" alt=""></div>
+                    <div id="calendar-data">
+                        <!-- Calender here -->
+                    </div>
+                    <div class="calender" style="border-left: 1px solid #DEE2E6;" id="right-arrow"><img src="./images/right-arrow.png" alt=""></div>
+                </div>
+    
+                <div id="user2">
+                    <div class="calender"><img src="./images/user.png" alt="user"></div>
+                    <div id="userName"> <!-- User name --></div>
+                </div>
+                <div id="member-box">
+                    <input type="text" id="search-member" placeholder="Search by name">
+                    <div id="member-data">
+                        <!-- All member Data -->
+                    </div>
+                </div>
+            </div>
+            <hr style="color: #DEE2E6;">
+    
+            <div id="table">
+                <div class="time" style="font-weight: 500;">Client & Project</div>
+                <div class="time" style="font-weight: 500;">Task</div>
+                <!-- Data inject from data entered and date -->
+                <div class="time-data">
+                    <div class="date"></div>
+                    <div class="time">0:00</div>
+                </div>
+                <div class="time-data">
+                    <div class="date"></div>
+                    <div class="time">0:00</div>
+                </div>
+                <div class="time-data">
+                    <div class="date"></div>
+                    <div class="time">0:00</div>
+                </div>
+                <div class="time-data">
+                    <div class="date"></div>
+                    <div class="time">0:00</div>
+                </div>
+                <div class="time-data">
+                    <div class="date"></div>
+                    <div class="time">0:00</div>
+                </div>
+                <div class="time-data">
+                    <div class="time" style="font-weight: 500;">Total Budget</div>
+                    <div class="time" style="margin-top: 10px; padding-left: 30px;">0:00</div>
+                </div>
+            </div>
+
+            <hr>
+            <div id="table-data">
+                <table>
+                    <tr>
+                        <td><input type="text" placeholder="Project Name" class="first-col"></td>
+                        <div class="project-box" id="project-box"><input type="text" placeholder="Search by project name" id="project-search"></div>
+                        <td><input type="text" placeholder="Task" class="second-col"></td>
+                        <td><input type="text" placeholder="hh:mm" class="day-time" ></td>
+                        <td><input type="text" placeholder="hh:mm" class="day-time"></td>
+                        <td><input type="text" placeholder="hh:mm" class="day-time"></td>
+                        <td><input type="text" placeholder="hh:mm" class="day-time"></td>
+                        <td><input type="text" placeholder="hh:mm" class="day-time"></td>
+                        <td class="total time">19:00</td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" placeholder="Project Name" class="first-col"></td>
+                        <td><input type="text" placeholder="Task" class="second-col"></td>
+                        <td><input type="text" placeholder="hh:mm" class="day-time" ></td>
+                        <td><input type="text" placeholder="hh:mm" class="day-time"></td>
+                        <td><input type="text" placeholder="hh:mm" class="day-time"></td>
+                        <td><input type="text" placeholder="hh:mm" class="day-time"></td>
+                        <td><input type="text" placeholder="hh:mm" class="day-time"></td>
+                        <td class="total time">19:00</td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" placeholder="Project Name" class="first-col"></td>
+                        <td><input type="text" placeholder="Task" class="second-col"></td>
+                        <td><input type="text" placeholder="hh:mm" class="day-time" ></td>
+                        <td><input type="text" placeholder="hh:mm" class="day-time"></td>
+                        <td><input type="text" placeholder="hh:mm" class="day-time"></td>
+                        <td><input type="text" placeholder="hh:mm" class="day-time"></td>
+                        <td><input type="text" placeholder="hh:mm" class="day-time"></td>
+                        <td class="total time">19:00</td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" placeholder="Project Name" class="first-col"></td>
+                        <td><input type="text" placeholder="Task" class="second-col"></td>
+                        <td><input type="text" placeholder="hh:mm" class="day-time" ></td>
+                        <td><input type="text" placeholder="hh:mm" class="day-time"></td>
+                        <td><input type="text" placeholder="hh:mm" class="day-time"></td>
+                        <td><input type="text" placeholder="hh:mm" class="day-time"></td>
+                        <td><input type="text" placeholder="hh:mm" class="day-time"></td>
+                        <td class="total time">19:00</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./script/dashboard.js"></script>
+</html>

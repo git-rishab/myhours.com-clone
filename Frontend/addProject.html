@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/addProject.css">
+    <title>New project - Work Flow</title>
+</head>
+<body>
+    <!-- Side Panel -->
+    <div id="side-panel">
+        <div id="logo"><img src="./images/logo.png" alt="logo"></div>
+        <div onclick="location.href=`./dashboard.html`"><img src="./images/track.png" alt="track"> Track</div>
+        <div onclick="location.href=`./project.html`" style="background-color: #DEE2E6;"><img src="./images/project.png" alt="projects"> Projects</div>
+        <div onclick="location.href=`./team.html`"><img src="./images/team.png" alt="team"> Team</div>
+        <div onclick="location.href=`./reports.html`"> <img src="./images/report.png" alt="reports"> Reports</div>
+        <div id="user">
+            <img src="./images/user.png" alt="user">
+            <!-- User Name Here-->
+            User
+        </div>
+    </div>
+
+    <div id="main-body">
+        <div id="child">
+            <div><h1>Add project</h1></div>
+            <form>
+                <label for="name"> <span>NAME</span></label>
+                <input type="text" name="name" id="name" placeholder="Enter name of the project" required/>
+
+                <label for="comment"><span>DESCRIPTION</span></label>
+                <textarea rows="4" cols="50" name="comment" placeholder="Enter Project Description"></textarea>
+                <div id="bill">
+                    <div>
+                        Billable Settings
+                    </div>
+                    <div class="bill-child">
+                       <h4>Team member-based rate</h4>
+                       <p>Set billable rates per Team member in the next step.</p>
+                    </div>
+                    <div class="bill-child">
+                        <h4>Task-based rate</h4>
+                       <p>Set billable rates on the task-level. Each task can have a different rate.</p>
+                    </div>
+                    <div class="bill-child">
+                        <h4>Project Based Rate</h4>
+                       <p>All time logs in this project will have the same billable rate.</p>
+                    </div>
+                    <div class="bill-child">
+                        <h4>Not billable</h4>
+                       <p>Billable amount will not be calculated.</p>
+                    </div>
+                    <div id="calculation-rate">
+                        <!-- Inject Code -->
+                        <h5>Calculation rule</h5>
+                       <p>
+                        <!-- Inject the Data here here -->
+                       </p>
+                    </div>
+                </div>
+                <input type="submit" value="Create project" id="submit">
+            </form>
+
+        </div>
+
+    </div>
+</body>
+<script src="./script/addProject.js"></script>
+</html>
