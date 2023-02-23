@@ -2,10 +2,10 @@ const mongoose = require("mongoose");
 
 const projectSchema = mongoose.Schema({
     name:String,
-    client:String,
     description:String,
     billMethod:String,
-    clientID:String,
+    managerID:String,
+    normalID:String,
     userID:String
 },{
     versionKey:false

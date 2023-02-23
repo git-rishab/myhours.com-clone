@@ -13,7 +13,7 @@ projectRoute.get("/",async(req,res)=>{
 projectRoute.post("/create",async(req,res)=>{
     let data = new ProjectModel(req.body);
     await data.save();
-    res.send({"ok":true,"msg":"project added successfully"});
+    res.send({"ok":true,"msg":"Project Added Successfully"});
 })
 
 

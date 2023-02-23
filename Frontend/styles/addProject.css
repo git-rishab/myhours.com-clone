@@ -134,7 +134,7 @@ form > label{
 }
 .bill-child{
     padding: 15px 50px;
-    border: #DFDFDF;
+    border: 1px solid #DFDFDF;
     background-color: #FFFFFF;
     margin-top: 20px;
     border-radius: 10px;
@@ -146,10 +146,22 @@ form > label{
     font-size: 15px;
     font-weight: 600;
     line-height: 23px;
+    color: #687481;
+    margin-bottom: 5px;
 }
 #bill > div:nth-child(1){
     font-weight: 500;
     line-height: 27px;
     font-size: 22.5px;
     color: #687481;
+}
+#calculation-rate{
+    margin-top: 20px;
+}
+#h5{
+    color: #6A6F6F;
+    margin-bottom: 8px;
+}
+#billable-rate{
+    color: #354C50;
 }

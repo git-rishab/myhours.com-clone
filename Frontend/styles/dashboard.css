@@ -7,6 +7,7 @@
 }
 body{
     font-family: sans-serif;
+    background-color: #FFFFFF;
 }
 
 /* Side Panel */
@@ -163,7 +164,7 @@ table{
 #table-data .day-time{
     width: 70px
 }
-table input, #member-box input, .project-box input{
+table input, #member-box input, #project-outer-box input{
     height: 30px;
     border: 1px solid #DEE2E6;
     padding: 3px 10px;
@@ -174,7 +175,7 @@ table input, #member-box input, .project-box input{
     margin-bottom: 10px;
     margin-right: 5px;
 }
-table input:focus, #member-box input:focus, .project-box input:focus{
+table input:focus, #member-box input:focus, #project-outer-box input:focus{
     outline: none;
 }
 .total{
@@ -183,7 +184,7 @@ table input:focus, #member-box input:focus, .project-box input:focus{
 }
 
 /* Member search box */
-#member-box, .project-box{
+#member-box, #project-outer-box{
     position: absolute;
     top: 175px;
     right: 550px;
@@ -197,7 +198,7 @@ table input:focus, #member-box input:focus, .project-box input:focus{
     visibility: hidden;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
-#member-box input, .project-box input{
+#member-box input, #project-outer-box input{
     width: 90%;
     height: 15px;
     padding: 10px;
@@ -216,8 +217,8 @@ table input:focus, #member-box input:focus, .project-box input:focus{
 }
 
 /* Project box */
-.project-box{
-    visibility: visible;
-    top: 370px;
+#project-outer-box{
+    /* top: 370px; */
     right: 935px;
+    visibility: hidden;
 }

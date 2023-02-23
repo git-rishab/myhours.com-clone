@@ -25,7 +25,7 @@
 
     <div id="main-body">
         <div id="child">
-            <div>
+            <div id="title">
                 <h1>Weekly timesheet</h1>
             </div>
     
@@ -46,6 +46,7 @@
                 </div>
                 <div id="member-box">
                     <input type="text" id="search-member" placeholder="Search by name">
+                    <div id="admin"></div>
                     <div id="member-data">
                         <!-- All member Data -->
                     </div>
@@ -54,7 +55,7 @@
             <hr style="color: #DEE2E6;">
     
             <div id="table">
-                <div class="time" style="font-weight: 500;">Client & Project</div>
+                <div class="time" style="font-weight: 500;">Project</div>
                 <div class="time" style="font-weight: 500;">Task</div>
                 <!-- Data inject from data entered and date -->
                 <div class="time-data">
@@ -88,43 +89,48 @@
                 <table>
                     <tr>
                         <td><input type="text" placeholder="Project Name" class="first-col"></td>
-                        <div class="project-box" id="project-box"><input type="text" placeholder="Search by project name" id="project-search"></div>
+                        <div id="project-outer-box">
+                            <input type="text" placeholder="Search by project name" id="project-search">
+                            <div id="project-box">
+                                <!-- Append project data -->
+                            </div>
+                        </div>
                         <td><input type="text" placeholder="Task" class="second-col"></td>
-                        <td><input type="text" placeholder="hh:mm" class="day-time" ></td>
-                        <td><input type="text" placeholder="hh:mm" class="day-time"></td>
-                        <td><input type="text" placeholder="hh:mm" class="day-time"></td>
-                        <td><input type="text" placeholder="hh:mm" class="day-time"></td>
-                        <td><input type="text" placeholder="hh:mm" class="day-time"></td>
+                        <td><input type="text" placeholder="hh:mm" class="day-time first"></td>
+                        <td><input type="text" placeholder="hh:mm" class="day-time second"></td>
+                        <td><input type="text" placeholder="hh:mm" class="day-time third"></td>
+                        <td><input type="text" placeholder="hh:mm" class="day-time forth"></td>
+                        <td><input type="text" placeholder="hh:mm" class="day-time fifth"></td>
                         <td class="total time">19:00</td>
                     </tr>
                     <tr>
                         <td><input type="text" placeholder="Project Name" class="first-col"></td>
                         <td><input type="text" placeholder="Task" class="second-col"></td>
-                        <td><input type="text" placeholder="hh:mm" class="day-time" ></td>
-                        <td><input type="text" placeholder="hh:mm" class="day-time"></td>
-                        <td><input type="text" placeholder="hh:mm" class="day-time"></td>
-                        <td><input type="text" placeholder="hh:mm" class="day-time"></td>
-                        <td><input type="text" placeholder="hh:mm" class="day-time"></td>
+                        <td><input type="text" placeholder="hh:mm" class="day-time first" ></td>
+                        <td><input type="text" placeholder="hh:mm" class="day-time second"></td>
+                        <td><input type="text" placeholder="hh:mm" class="day-time third"></td>
+                        <td><input type="text" placeholder="hh:mm" class="day-time forth"></td>
+                        <td><input type="text" placeholder="hh:mm" class="day-time fifth"></td>
                         <td class="total time">19:00</td>
                     </tr>
                     <tr>
                         <td><input type="text" placeholder="Project Name" class="first-col"></td>
                         <td><input type="text" placeholder="Task" class="second-col"></td>
-                        <td><input type="text" placeholder="hh:mm" class="day-time" ></td>
-                        <td><input type="text" placeholder="hh:mm" class="day-time"></td>
-                        <td><input type="text" placeholder="hh:mm" class="day-time"></td>
-                        <td><input type="text" placeholder="hh:mm" class="day-time"></td>
-                        <td><input type="text" placeholder="hh:mm" class="day-time"></td>
+                        <td><input type="text" placeholder="hh:mm" class="day-time first" ></td>
+                        <td><input type="text" placeholder="hh:mm" class="day-time second"></td>
+                        <td><input type="text" placeholder="hh:mm" class="day-time third"></td>
+                        <td><input type="text" placeholder="hh:mm" class="day-time forth"></td>
+                        <td><input type="text" placeholder="hh:mm" class="day-time fifth"></td>
                         <td class="total time">19:00</td>
                     </tr>
                     <tr>
                         <td><input type="text" placeholder="Project Name" class="first-col"></td>
                         <td><input type="text" placeholder="Task" class="second-col"></td>
-                        <td><input type="text" placeholder="hh:mm" class="day-time" ></td>
-                        <td><input type="text" placeholder="hh:mm" class="day-time"></td>
-                        <td><input type="text" placeholder="hh:mm" class="day-time"></td>
-                        <td><input type="text" placeholder="hh:mm" class="day-time"></td>
-                        <td><input type="text" placeholder="hh:mm" class="day-time"></td>
+                        <td><input type="text" placeholder="hh:mm" class="day-time first" ></td>
+                        <td><input type="text" placeholder="hh:mm" class="day-time second"></td>
+                        <td><input type="text" placeholder="hh:mm" class="day-time third"></td>
+                        <td><input type="text" placeholder="hh:mm" class="day-time forth"></td>
+                        <td><input type="text" placeholder="hh:mm" class="day-time fifth"></td>
                         <td class="total time">19:00</td>
                     </tr>
                 </table>
