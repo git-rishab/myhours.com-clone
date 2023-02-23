@@ -1,12 +1,9 @@
 const mongoose = require("mongoose");
 
 const timeSchema = mongoose.Schema({
-    mon:Array,
-    tue:Array,
-    wed:Array,
-    thu:Array,
-    fri:Array,
+    data:Array,
     userID:String,
+    email:String,
     memebrID:String
 },{
     versionKey:false

@@ -4,15 +4,14 @@ let userData = JSON.parse(localStorage.getItem("userData"));
 let token = localStorage.getItem("token");
 
 // Checking if user logged in
-fetch(`${url}project/checking`,{
-    method:"GET",
+fetch(`${url}project/checking`, {
+    method: "GET",
     headers: {
         "content-type": "application/json",
         "authorization": token
     }
-}).then((raw)=> raw.json()).then((original)=>{
-    console.log(original);
-    if(!original.ok){
+}).then((raw) => raw.json()).then((original) => {
+    if (!original.ok) {
         console.log("here");
         Swal.fire({
             icon: 'error',
@@ -20,11 +19,11 @@ fetch(`${url}project/checking`,{
             text: `Please Login First`,
             footer: '<a href="./loginPage.html">Login Now?</a>'
         });
-        setTimeout(()=>{
+        setTimeout(() => {
             document.location.href = "./loginPage.html";
-        },2500)
+        }, 2500)
     }
-}).catch((err)=> err);
+}).catch((err) => err);
 
 
 let dt = new Date();
@@ -54,6 +53,10 @@ let week = {
 calender();
 dates();
 members();
+projects();
+gettingData();
+// timeInput();
+
 
 function calender() {
     let left = document.getElementById("left-arrow");
@@ -132,20 +135,27 @@ function members() {
 }
 
 // Creating and appending the data
-function createDomMember(data, cont, className) {
+function createDomMember(data, cont, className,takeInput,boxToHide) {
     cont.innerHTML = null;
     data.forEach(el => {
         let div = document.createElement("div");
         div.setAttribute("class", className);
         div.innerHTML = `${el.name}`;
+
+        // Individual Option selecting and changing the input and selected value
+        div.addEventListener("click",()=>{
+            takeInput.innerHTML = el.name;
+            takeInput.value = el.name;
+            boxToHide.style.visibility = "hidden";
+            takeInput.disabled = false;
+        })
         cont.append(div);
     });
 }
 
 // Get Request function
-async function fetching(route, className, container, searchCont) {
+async function fetching(route, className, container, searchCont,takeInput,boxToHide) {
     try {
-
         let request = await fetch(`${url}${route}/`, {
             method: "GET",
             headers: {
@@ -153,18 +163,16 @@ async function fetching(route, className, container, searchCont) {
                 "authorization": token
             }
         });
-
-        let response = await request.json();
-        createDomMember(response, container, className);
-
+        var response = await request.json();
+        createDomMember(response, container, className,takeInput,boxToHide);
     } catch (error) {
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
             text: `Something went wrong with Server`,
-        })
+        });
+        console.log(error);
     }
-
     // Member Search functionality
     searchCont.addEventListener("keyup", () => {
         let newData = response.filter(el => {
@@ -173,7 +181,7 @@ async function fetching(route, className, container, searchCont) {
             }
             return false;
         })
-        createDomMember(newData, container, className);
+        createDomMember(newData, container, className,takeInput,boxToHide);
     })
 }
 
@@ -181,35 +189,175 @@ async function fetching(route, className, container, searchCont) {
 document.getElementById("user2").addEventListener("click", () => {
     let cont = document.getElementById("member-data");
     let searchMember = document.getElementById("search-member");
-    document.getElementById("member-box").style.visibility = "visible";
-
-    fetching("member", "names", cont, searchMember);
-
-    // Fetching data of members
-
-    var wrapper = document.querySelector('body');
-    document.addEventListener('click', (e)=> {
-        if (!wrapper.contains(e.target) ) {
-            // Do something when user clicked outside of wrapper element
-            document.getElementById("member-box").style.visibility = "hidden";
-            console.log("HI");
-        }
-    })
+    let userName = document.getElementById("userName");
+    let box = document.getElementById("member-box");
+    box.style.visibility = "visible";
+    fetching("member", "names", cont, searchMember,userName,box);
+    boxVisibility("member-box", "user2", "#");
 })
+
 
 // Show Projects
 function projects() {
-
     let input = document.getElementsByClassName("first-col");
     let cont = document.getElementById("project-box");
     let searchProject = document.getElementById("project-search");
+    let projectOuterBox = document.getElementById("project-outer-box");
+
     for (let i = 0; i < input.length; i++) {
-
         input[i].addEventListener("click", () => {
+            fetching("project", "names", cont, searchProject,input[i],projectOuterBox);
+            
+            projectOuterBox.style.visibility = "visible";
 
-            fetching("project","names",cont,searchProject);
+            // Adding required distance in pixel to project-outer-box div
+            var distanceFromTop = input[i].getBoundingClientRect().top;
+            projectOuterBox.style.top = `${distanceFromTop + 50}px`;
+            input[i].disabled = true;
+            boxVisibility("project-outer-box","first-col",".",input[i]);
         })
     }
-
 }
-projects()
+
+
+// Box Visibility and Hiding
+function boxVisibility(boxToHide, exception, selector,enableTakingInput) {
+    // Select element with box class, assign to box variable
+    const box = document.querySelector(`#${boxToHide}`)
+    // Detect all clicks on the document
+    document.addEventListener("click", (event) => {
+        // If user clicks inside the element, do nothing
+        if (event.target.closest(`#${boxToHide}`) || event.target.closest(`${selector}${exception}`)) return
+        // If user clicks outside the element, hide it!
+        box.style.visibility = "hidden"
+        enableTakingInput.disabled = false;
+    })
+}
+
+
+// Taking input of Day Time
+function timeInput() {
+    let date = document.getElementsByClassName("date");
+    let projects = document.getElementsByClassName("first-col");
+    let taskss = document.getElementsByClassName("second-col");
+    let k = 0;
+    let className;
+    let clasesOfTime = {
+        0:"first",
+        1:"second",
+        2:"third",
+        3:"forth",
+        4:"fifth"
+    }
+    let payLoad = {};
+    for(let i = 0; i < date.length; i++){
+        let dateKey = date[i].innerHTML.split(" ").join("");
+        payLoad[dateKey] = [];
+
+        className = document.getElementsByClassName(clasesOfTime[i]);
+        for(let j = 0; j < className.length; j++){
+            let tasks = {};
+            if(className[j].value){
+                tasks.project = projects[k].value;
+                tasks.task = taskss[k].value;
+                tasks.time = className[j].value;
+                payLoad[dateKey].push(tasks);
+            }
+            k++;
+        }
+        k = 0;
+    }
+    return payLoad;
+}
+
+// Updatig time model function
+async function updateTime(){
+    let request = await fetch(`${url}time/update`,{
+        method:"PATCH",
+        headers:{
+            "content-type": "application/json",
+            "authorization": token
+        },
+        body: JSON.stringify({data:timeInput()})
+    });
+    let response = await request.json();
+    console.log(response);
+}
+
+
+// Getting The time data of the user
+async function gettingData() {
+    try {
+        let request = await fetch(`${url}time/`,{
+            method:"GET",
+            headers:{
+                "content-type": "application/json",
+                "authorization": token
+            }
+        });
+        let response = await request.json();
+        appendTime(response.data);
+        
+    } catch (error) {
+        console.log("Something went wrong");
+    }
+}
+
+// Apending the time to their respective boxes/places
+function appendTime(data) {
+    let date = document.getElementsByClassName("date");
+    let projects = document.getElementsByClassName("first-col");
+    let taskss = document.getElementsByClassName("second-col");
+    let k = 0;
+    let m = 0;
+    let className;
+    let clasesOfTime = {
+        0:"first",
+        1:"second",
+        2:"third",
+        3:"forth",
+        4:"fifth"
+    };
+    // Finding the object element which have the required date
+    let requiredDate = date[0].innerHTML.split(" ").join("");
+    var dataObj;
+
+    for(let el of data){
+        if(el[requiredDate]){
+            dataObj = el;
+            break;
+        }
+    }
+    if(!dataObj) return;
+
+    // Main Logic to append the time data
+    for(let i = 0; i < date.length; i++){
+        let dateKey = date[i].innerHTML.split(" ").join("");
+        className = document.getElementsByClassName(clasesOfTime[i]);
+        for(let j = 0; j < className.length; j++){
+            console.log(dateKey);
+            if(!dataObj[dateKey][m]){
+                break;
+            }
+            
+            if(!taskss[k].value){
+                projects[k].value = dataObj[dateKey][m].project;
+                taskss[k].value = dataObj[dateKey][m].task;
+                className[j].value = dataObj[dateKey][m].time;
+                m++;
+            } 
+            else if(taskss[k].value == dataObj[dateKey][m].task && projects[k].value == dataObj[dateKey][m].project){
+                className[j].value = dataObj[dateKey][m].time;
+                m++;
+            }
+            k++;
+        }
+        m = 0;
+        k = 0;
+    }
+}
+
+// Updating time at regular time interval
+// setInterval(()=>{
+//     updateTime();
+// },4000)

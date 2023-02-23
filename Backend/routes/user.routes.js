@@ -1,5 +1,6 @@
 const express = require("express");
 const {UserModel} = require("../model/user.model");
+const {TimeModel} = require("../model/time.model");
 const jwt = require("jsonwebtoken");
 
 
@@ -14,6 +15,11 @@ userRoute.post("/register",async(req,res)=>{
         res.send({"ok":false,"msg":"User Already Exist"});
     } else {
         let data = new UserModel(req.body);
+
+        // Creating time model also along with registration
+        let time = new TimeModel({email:req.body.email,data:[]});
+        await time.save();
+        
         await data.save();
         res.send({"ok":true,"msg":"Registered Successfully"});
     }
