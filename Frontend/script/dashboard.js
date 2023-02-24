@@ -318,7 +318,7 @@ function appendTime(data) {
         3:"forth",
         4:"fifth"
     };
-    // Finding the object element which have the required date
+    // Finding the object element which have the required data
     let requiredDate = date[0].innerHTML.split(" ").join("");
     var dataObj;
 
