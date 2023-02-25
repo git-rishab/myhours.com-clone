@@ -110,20 +110,25 @@ form > label{
     font-size: 13px;
     line-height: 18px;
 }
-#submit:hover{
+#submit:hover, #cancel:hover{
     cursor: pointer;
     background-color: rgb(94, 167, 212);
 }
-#submit{
+#submit, #cancel{
     border-radius: 10px;
     background-color: #3279A5;
     color: #ffffff;
     margin: auto;
     margin-top: 20px;
 }
+#cancel{
+    padding: 10px;
+    text-align: center;
+    width: 88%;
+}
 
 /* Billable settings */
-#bill{
+.bill{
     width: 90%;
     background-color: #F9FAFB;
     padding: 23px;
@@ -142,12 +147,13 @@ form > label{
 .bill-child:hover{
     cursor: pointer;
 }
-#bill h4{
+.bill h4{
     font-size: 15px;
     font-weight: 600;
     line-height: 23px;
+    color: #687481;
 }
-#bill > div:nth-child(1){
+.bill > div:nth-child(1){
     font-weight: 500;
     line-height: 27px;
     font-size: 22.5px;
@@ -171,4 +177,8 @@ input::-webkit-inner-spin-button {
 }
 .rate input:focus{
     outline: none;
+}
+.rates:focus{
+    outline: none;
+    border: 1px solid #49c3db;
 }

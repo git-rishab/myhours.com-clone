@@ -4,26 +4,17 @@ let userData = JSON.parse(localStorage.getItem("userData"));
 let token = localStorage.getItem("token");
 
 // Checking if user logged in
-fetch(`${url}project/checking`, {
-    method: "GET",
-    headers: {
-        "content-type": "application/json",
-        "authorization": token
-    }
-}).then((raw) => raw.json()).then((original) => {
-    if (!original.ok) {
-        console.log("here");
-        Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: `Please Login First`,
-            footer: '<a href="./loginPage.html">Login Now?</a>'
-        });
-        setTimeout(() => {
-            document.location.href = "./loginPage.html";
-        }, 2500)
-    }
-}).catch((err) => err);
+if(!token){
+    Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: `Please Login First`,
+        footer: '<a href="./loginPage.html">Login Now?</a>'
+    });
+    setTimeout(() => {
+        document.location.href = "./loginPage.html";
+    }, 2500)
+}
 
 
 let dt = new Date();

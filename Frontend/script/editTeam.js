@@ -1,6 +1,7 @@
 const url = `http://localhost:5000/`;
-const form = document.querySelector("form");
+const memberData = JSON.parse(localStorage.getItem("member"));
 const token = localStorage.getItem("token");
+const form = document.querySelector("form");
 
 // Checking if user logged in
 if(!token){
@@ -22,20 +23,27 @@ let roles = {
 }
 
 var roleSelected;
+var colured;
 
 // Function calls
 stylingOfBillableRate();
-
+details();
 
 function stylingOfBillableRate() {
     let bills = document.getElementsByClassName("roles");
     let h4 = document.querySelectorAll(".roles h4");
-
-    for(let i = 0; i < bills.length; i++){
     
+    colured = Object.keys(roles).find(key => roles[key] === memberData.role);
+    
+    for(let i = 0; i < bills.length; i++){
+        if(i == colured){
+            bills[i].style.border = "2px solid #3B8FC2";
+            h4[i].style.color = "#3B8FC2";
+        }
+
         bills[i].addEventListener("click",()=>{
             roleSelected = i;
-
+            colured = null;
             for(let j = 0; j < bills.length; j++){
                 bills[j].style.border = "1px solid #DFDFDF";
                 h4[j].style.color = "#687481";
@@ -47,33 +55,38 @@ function stylingOfBillableRate() {
     }
 }
 
+// Predefined values
+function details() {
+    form.name.value = memberData.name;
+    form.email.value = memberData.email;
+    form.laborRate.value = memberData.labourRate;
+    form.billableRate.value = memberData.billableRate;
+}
+
+
 // Form EventListener
 form.addEventListener("submit",(e)=>{
     e.preventDefault();
     if(roleSelected == undefined){
-        Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: `Please select a Role`
-        })
-        return;
+        roleSelected = colured
     }
 
-    let memberData = {
+    let memberDataa = {
         name:form.name.value,
         email:form.email.value,
         labourRate:form.laborRate.value,
         billableRate:form.billableRate.value,
-        role:roles[roleSelected]
+        role:roles[roleSelected],
+        _id:memberData._id
     }
 
-    fetch(`${url}member/create`,{
-        method:"POST",
+    fetch(`${url}member/update`,{
+        method:"PATCH",
         headers: {
             "content-type": "application/json",
             "authorization": token
         },
-        body: JSON.stringify(memberData)
+        body: JSON.stringify(memberDataa)
     })
     .then((raw)=> raw.json()).then((original)=>{
         if(original.ok){
@@ -82,9 +95,9 @@ form.addEventListener("submit",(e)=>{
                 '',
                 'success'
             );
-            setTimeout(() => {
+            setTimeout(()=>{
                 document.location.href = "./team.html";
-            }, 2500)
+            },2500)
         } else {
             Swal.fire({
                 icon: 'error',
@@ -99,7 +112,7 @@ form.addEventListener("submit",(e)=>{
             title: 'Oops...',
             text: `Something went wrong, Check console`
         })
-        console.log("Error while creating member:-",err);
+        console.log("Error while updating member:-",err);
     });
 
 });
