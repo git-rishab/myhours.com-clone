@@ -104,6 +104,7 @@ body{
     font-family: sans-serif;
     border-radius: 5px;
     border: 1px solid #DEE2E6;
+    margin-bottom: 30px;
 }
 #search:focus{
     outline: none;
@@ -111,39 +112,29 @@ body{
 }
 hr{
     color: #DEE2E6;
+    margin-bottom: 20px;
 }
 
 /* Table */
-#table {
+.table{
     display: flex;
+    padding: 0px 10px;
     height: 50px;
     align-items: center;
-    margin-top: 30px;
 }
-#table > div:nth-child(1){
+.table > div:nth-child(1){
     width: 305px;
 }
-#table > div:nth-child(2){
+.table > div:nth-child(2){
     width: 177.5px;
     margin-right: 30px;
 }
-#table > div:nth-child(3), #table > div:nth-child(4), #table > div:nth-child(5){
+.table > div:nth-child(3), .table > div:nth-child(4), .table > div:nth-child(5){
     width: 200px;
     margin-right: 70px;
 }
-#table > div:nth-child(6){
+.table > div:nth-child(6){
     width: 140px;
-}
-.time-data{
-    display: flex;
-    flex-direction: column;
-}
-.date{
-    color: #949494;
-    font-family: sans-serif;
-    font-size: 12px;
-    line-height: 18px;
-    margin-bottom: 10px;
 }
 .time{
     font-size: 18.75px;
@@ -151,4 +142,60 @@ hr{
     line-height: 22px;
     color: #687481;
     font-family: sans-serif;
+}
+
+/* Appending data table */
+.table-data{
+    
+    border-radius:5px;
+}
+.table-data:hover{
+    cursor: pointer;
+    background-color: #EAF3F9;
+}
+.details{
+    font-size: 13px;
+    padding: 0px 10px;
+    font-weight: 400;
+    line-height: 18px;
+    color: #6A6A6A;
+}
+#data-container{
+    display: flex;
+    flex-direction: column;
+}
+#role{
+    font-weight: 550;
+}
+#role::first-letter, #name::first-letter{
+    text-transform: capitalize;
+}
+.rates{
+    text-align: center;
+}
+#action{
+    display: flex;
+}
+.edit,.delete{
+    color: #ffff;
+    font-weight: 600;
+    padding: 6px;
+    border-radius: 5px;
+    background-color: #69F0AE;
+    margin-right: 8px;
+}
+.edit:hover{
+    background-color: #39dd8e;
+}
+.delete{
+    background-color: #FF8A80;
+    margin-right: 0px;
+}
+.delete:hover{
+    background-color: #f57165;
+}
+#no-member{
+    color: #687481;
+    font-weight: 500;
+    text-align: center;
 }

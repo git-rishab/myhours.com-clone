@@ -2,6 +2,19 @@ const url = `http://localhost:5000/`;
 const form = document.querySelector("form");
 const token = localStorage.getItem("token");
 
+// Checking if user logged in
+if(!token){
+    Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: `Please Login First`,
+        footer: '<a href="./loginPage.html">Login Now?</a>'
+    });
+    setTimeout(() => {
+        document.location.href = "./loginPage.html";
+    }, 2500)
+}
+
 let methods = {
     0:"member-based",
     1:"task-based",
@@ -53,7 +66,7 @@ function stylingOfBillableRate() {
 // Form EventListener
 form.addEventListener("submit",(e)=>{
     e.preventDefault();
-    if(!method){
+    if(method == undefined){
         Swal.fire({
             icon: 'error',
             title: 'Oops...',

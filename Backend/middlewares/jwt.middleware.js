@@ -6,13 +6,13 @@ const authorisation = (req,res,next)=>{
 
     jwt.verify(token, 'token', (err, decoded)=>{
         if(err){
-            res.send(err);
+            res.send({"msg":"Please Login First"});
         }
         if(decoded){
             req.body.userID = decoded.userID;
             next();
         } else {
-            res.send({"msg":"please login first"});
+            res.send({"msg":"Please Login First"});
         }
         
     });

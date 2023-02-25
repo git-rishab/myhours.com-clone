@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/addTeam.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <title>Add/Edit team members - Work Flow</title>
+    <title>Edit team members - Work Flow</title>
 </head>
 <body>
     <!-- Side Panel -->
@@ -25,7 +25,7 @@
 
     <div id="main-body">
         <div id="child">
-            <div><h1>Add Team member</h1></div>
+            <div><h1>Edit Team member</h1></div>
             <form>
                 <label for="name"> <span>NAME</span></label>
                 <input type="text" name="name" id="name" placeholder="Enter name of the member" required/>
@@ -82,12 +82,13 @@
                     </div>
                 </div>
 
-                <input type="submit" value="Invite" id="submit">
+                <input type="submit" value="Update Details" id="submit">
+                <div id="cancel" onclick="location.href=`./team.html`">Cancel</div>
             </form>
 
         </div>
 
     </div>
 </body>
-<script src="./script/addTeam.js"></script>
+<script src="./script/editTeam.js"></script>
 </html>
