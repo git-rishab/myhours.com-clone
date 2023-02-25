@@ -110,16 +110,21 @@ form > label{
     font-size: 13px;
     line-height: 18px;
 }
-#submit:hover{
+#submit:hover, #cancel:hover{
     cursor: pointer;
     background-color: rgb(94, 167, 212);
 }
-#submit{
+#submit, #cancel{
     border-radius: 10px;
     background-color: #3279A5;
     color: #ffffff;
     margin: auto;
     margin-top: 20px;
+}
+#cancel{
+    padding: 10px;
+    text-align: center;
+    width: 88%;
 }
 
 /* Billable settings */

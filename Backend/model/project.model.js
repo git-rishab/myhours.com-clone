@@ -6,6 +6,7 @@ const projectSchema = mongoose.Schema({
     billMethod:String,
     managerID:String,
     normalID:String,
+    created:String,
     userID:String
 },{
     versionKey:false

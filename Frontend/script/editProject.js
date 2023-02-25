@@ -1,6 +1,7 @@
 const url = `http://localhost:5000/`;
 const form = document.querySelector("form");
 const token = localStorage.getItem("token");
+const projectData = JSON.parse(localStorage.getItem("project"));
 
 // Checking if user logged in
 if(!token){
@@ -27,16 +28,25 @@ let calculationMethod = {
     2:"( billable rate   *   hours ) + expenses",
 }
 var method;
+var coloured;
 
 // Function calls
 stylingOfBillableRate();
+previousValue();
 
 
 function stylingOfBillableRate() {
     let bills = document.getElementsByClassName("bill-child");
     let h4 = document.querySelectorAll(".bill-child h4");
     
+    coloured = Object.keys(methods).find(key => methods[key] === projectData.billMethod);
+
     for(let i = 0; i < bills.length; i++){
+
+        if(i == coloured){
+            bills[i].style.border = "2px solid #3B8FC2";
+            h4[i].style.color = "#3B8FC2";
+        }
     
         bills[i].addEventListener("click",()=>{
             method = i;
@@ -63,33 +73,32 @@ function stylingOfBillableRate() {
     }
 }
 
+function previousValue() {
+    form.name.value = projectData.name;
+    form.comment.value = projectData.description;
+}
+
 // Form EventListener
 form.addEventListener("submit",(e)=>{
     e.preventDefault();
     if(method == undefined){
-        Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: `Please select Billable method`
-        })
-        return;
+        method = coloured
     }
-    let dt = new Date();
 
-    let projectData = {
+    let projectDataa = {
         name:form.name.value,
         description:form.comment.value,
         billMethod: methods[method],
-        created:`${dt.getDate()}-${dt.getMonth()+1}-${dt.getFullYear()}`
+        _id:projectData._id
     }
-    
-    fetch(`${url}project/create`,{
-        method:"POST",
+    console.log(projectDataa);
+    fetch(`${url}project/update`,{
+        method:"PATCH",
         headers: {
             "content-type": "application/json",
             "authorization": token
         },
-        body: JSON.stringify(projectData)
+        body: JSON.stringify(projectDataa)
     })
     .then((raw)=> raw.json()).then((original)=>{
         if(original.ok){

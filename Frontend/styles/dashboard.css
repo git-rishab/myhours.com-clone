@@ -87,6 +87,7 @@ body{
     border: 1px solid #DEE2E6;
     width: fit-content;
     border-radius: 5px;
+    background-clip: padding-box;
 }
 #calender img, #user2 img{
     width: 100%;
@@ -102,6 +103,7 @@ body{
 #calendar-data{
     color: #55758A;
     padding: 0px 15px 0px 10px;
+    background-clip: padding-box;
 }
 #user2{
     border: 1px solid #DEE2E6;
@@ -111,6 +113,12 @@ body{
     padding: 5px 45px 5px 0px;
     margin-left: 30px;
     color: #55758A;
+}
+
+#left-arrow:hover, #right-arrow:hover,#calendar-data:hover, #user2:hover{
+    cursor: pointer;
+    background-color: #DCEEFA;
+    /* background-clip: padding-box; */
 }
 
 /* Table */
@@ -177,10 +185,18 @@ table input, #member-box input, #project-outer-box input{
 }
 table input:focus, #member-box input:focus, #project-outer-box input:focus{
     outline: none;
+    border: 2px solid #49c3db;
 }
 .total{
     width: 10%;
     text-align: center;
+}
+.second-col, .second-col{
+    color: #5E5E5E;
+    font-family: sans-serif;
+    font-size: 15px;
+    line-height: 20px;
+    font-weight: 500;
 }
 
 /* Member search box */
