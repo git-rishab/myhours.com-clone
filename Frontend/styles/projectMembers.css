@@ -191,3 +191,34 @@ body{
 .remove:hover{
     cursor: pointer;
 }
+@media all and (min-width:320px) and (max-width:900px){
+    *{
+      margin: 0px;
+      padding: 0px;
+    }
+    #child{
+        margin: 0px;
+        padding: 5px;
+        margin: auto;
+        width: 80%;
+    }
+    #side-panel{
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+    #logo img{
+        display: none;
+        width: 0px;
+        height: 0px;
+    }
+    #logo{
+        width: 0px;
+        height: 0px;
+    }
+    #main-body{
+        width: 100%;
+        margin: 20px 0px 0px 0px;
+        padding: 0px;
+    }
+}

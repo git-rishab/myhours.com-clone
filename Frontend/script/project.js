@@ -9,7 +9,7 @@ document.onreadystatechange = function () {
     }
 };
 
-const url = `http://localhost:5000/`;
+const url = `https://brave-ray-necklace.cyclic.app/`;
 const token = localStorage.getItem("token");
 
 const dataContainer = document.getElementById("data-container");
@@ -87,9 +87,17 @@ async function createDOM(data) {
     dataContainer.innerHTML = data.map((el, i) => {
         let hour;
         let bill;
+
         if(result){
+
             hour = result[el.name.split(" ").join("")].total
-            bill = result[el.name.split(" ").join("")].billAmt;
+
+            if(!result[el.name.split(" ").join("")].billAmt){
+                bill = 0;
+            } else {
+                bill = result[el.name.split(" ").join("")].billAmt;
+            }
+
         } else {
             hour = "-"
             bill = 0

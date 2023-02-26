@@ -11,7 +11,7 @@ document.onreadystatechange = function () {
 
 
 // Required variable Declarations
-const url = `http://localhost:5000/`;
+const url = `https://brave-ray-necklace.cyclic.app/`;
 const userData = JSON.parse(localStorage.getItem("userData"));
 const token = localStorage.getItem("token");
 
@@ -542,7 +542,6 @@ function total() {
         }
         return +sum;
     }
-
     fetchingTotal(timeStamps);
 
     async function fetchingTotal(total) {
@@ -564,6 +563,7 @@ function total() {
                 }
             }
         }
+        console.log(res.data);
         if(res.data.data){
             await fetch(`${url}total/update`,{
                 method: "PATCH",
@@ -589,3 +589,28 @@ function total() {
 document.getElementById("sub").addEventListener("click",()=>{
     total();
 })
+
+function logOut() {
+    // Warning
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "Log Out?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            localStorage.clear();
+            Swal.fire(
+                'Log out successfull!',
+                '',
+                'success'
+            )
+            setTimeout(()=>{
+                document.location.href = "./index.html"
+            },2500)
+        }
+    })
+}

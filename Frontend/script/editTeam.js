@@ -10,7 +10,7 @@ document.onreadystatechange = function () {
 };
 
 
-const url = `http://localhost:5000/`;
+const url = `https://brave-ray-necklace.cyclic.app/`;
 const memberData = JSON.parse(localStorage.getItem("member"));
 const token = localStorage.getItem("token");
 const form = document.querySelector("form");

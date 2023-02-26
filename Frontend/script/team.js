@@ -9,7 +9,7 @@ document.onreadystatechange = function () {
     }
 };
 
-const url = `http://localhost:5000/`;
+const url = `https://brave-ray-necklace.cyclic.app/`;
 const token = localStorage.getItem("token");
 
 const dataContainer = document.getElementById("data-container");

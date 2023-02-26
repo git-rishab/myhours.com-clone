@@ -10,7 +10,7 @@ document.onreadystatechange = function () {
 };
 
 // Required variable Declarations
-const url = `http://localhost:5000/`;
+const url = `https://brave-ray-necklace.cyclic.app/`;
 const userData = JSON.parse(localStorage.getItem("userData"));
 let token = localStorage.getItem("token");
 
@@ -438,7 +438,7 @@ function disableInputs() {
 // Updating time at regular interval
 setInterval(() => {
     updateTime();
-    total();
+    // total();
 }, 3000)
 
 // Totaling the Times
@@ -533,24 +533,6 @@ function total() {
         }
     }
 
-    for(let key in timeStamps){
-        timeStamps[key].billAmt = bill(timeStamps[key].total)*userData.billableRate;
-        timeStamps[key].costAmt = bill(timeStamps[key].total)*userData.labourRate;
-    }
-
-    function bill(sum) {
-        sum = sum + "";
-        if (sum.length == 1) {
-            sum = `0.${sum[0]}`;
-        } else if (sum.length == 2) {
-            sum = `0.${sum[0]}${sum[1]}`
-        } else if (sum.length == 3) {
-            sum = `${sum[0]}.${sum[1]}${sum[2]}`;
-        } else {
-            sum = `${sum[0]}${sum[1]}.${sum[2]}${sum[3]}`;
-        }
-        return +sum;
-    }
     fetchingTotal(timeStamps);
     // console.log(timeStamps);
 
