@@ -4,10 +4,13 @@ const projectSchema = mongoose.Schema({
     name:String,
     description:String,
     billMethod:String,
-    managerID:String,
-    normalID:String,
+    team:Array,
+    tasks:Array,
     created:String,
-    userID:String
+    userID:String,
+    billAmt:String,
+    costAmt:String,
+    totalHour:String
 },{
     versionKey:false
 })

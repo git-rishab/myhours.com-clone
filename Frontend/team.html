@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="./styles/team.css">
+    <link rel="stylesheet" href="./styles/loader.css">
     <title>Team members - Work Flow</title>
 </head>
-<body>  
+
+<body>
     <!-- Side Panel -->
     <div id="side-panel">
         <div id="logo"><img src="./images/logo.png" alt="logo"></div>
         <div onclick="location.href=`./dashboard.html`"><img src="./images/track.png" alt="track"> Track</div>
         <div onclick="location.href=`./project.html`"><img src="./images/project.png" alt="projects"> Projects</div>
-        <div onclick="location.href=`./team.html`" style="background-color: #DEE2E6;"><img src="./images/team.png" alt="team"> Team</div>
+        <div onclick="location.href=`./team.html`" style="background-color: #DEE2E6;"><img src="./images/team.png"
+                alt="team"> Team</div>
         <div> <img src="./images/report.png" alt="reports"> Reports</div>
         <div id="user">
             <img src="./images/user.png" alt="user">
@@ -26,7 +30,9 @@
     <div id="main-body">
         <div id="child">
             <div id="top-section">
-                <div><h1>Team members</h1></div>
+                <div>
+                    <h1>Team members</h1>
+                </div>
                 <div id="add-project" onclick="location.href=`./addTeam.html`">New Team Member</div>
             </div>
 
@@ -55,10 +61,38 @@
 
             <div id="data-container">
                 <!-- Append data here -->
+                <!-- Loader -->
+                <div class="boxes">
+                    <div class="box">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="box">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="box">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="box">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
             </div>
         </div>
 
     </div>
 </body>
 <script src="./script/team.js"></script>
+
 </html>

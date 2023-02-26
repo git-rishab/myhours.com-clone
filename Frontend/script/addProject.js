@@ -1,3 +1,14 @@
+// Loader
+document.onreadystatechange = function () {
+    if (document.readyState !== "complete") {
+        document.querySelector("body").style.visibility = "hidden";
+        document.querySelector(".boxes").style.visibility = "visible";
+    } else {
+        document.querySelector(".boxes").style.display = "none";
+        document.querySelector("body").style.visibility = "visible";
+    }
+};
+
 const url = `http://localhost:5000/`;
 const form = document.querySelector("form");
 const token = localStorage.getItem("token");
@@ -98,8 +109,10 @@ form.addEventListener("submit",(e)=>{
                 '',
                 'success'
             )
+            
+            localStorage.setItem("projectData",JSON.stringify(original.payLoad[0]));
             setTimeout(()=>{
-                document.location.href = `./project.html`;
+                document.location.href = `./projectMembers.html`;
             },2500)
         }
     })

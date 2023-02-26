@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/project.css">
+    <link rel="stylesheet" href="./styles/projectMembers.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="./styles/loader.css">
-    <title>Projects - Work Flow</title>
+    <title>Project Users - Wrok Flow</title>
 </head>
 
 <body>
@@ -30,34 +30,30 @@
     <div id="main-body">
         <div id="child">
             <div id="top-section">
-                <div>
-                    <h1>Projects</h1>
+                <h1>Project Members</h1>
+                <div id="project-name">
+                    <!-- project name -->
                 </div>
-                <div id="add-project" onclick="location.href=`./addProject.html`">Add new project</div>
+                <div id="done">All set and done</div>
             </div>
 
-            <div>
-                <input type="text" placeholder="Search by Project name" id="search">
+            <div id="p">
+                All project members will be able to track time on this project and it’s tasks. Members with Manager role
+                have access to the project and associated time logs.
             </div>
 
-            <div class="table">
-                <div class="time">NAME</div>
-                <div class="time">CREATED</div>
-                <div class="time">
-                    BILLABLE AMOUNT
-                </div>
-                <div class="time">
-                    TOTAL HOURS
-                </div>
-                <div class="time" style="margin-right: 0px;">
-                    ACTION
-                </div>
+            <div class="table-title">
+                <div>NAME</div>
+                <div>LABOR RATE</div>
+                <div>ROLE</div>
+                <div>ACTIONS</div>
             </div>
             <hr>
 
-            <div id="data-container">
-                <!-- Append data here -->
-                <!-- Loader -->
+            <div id="container">
+                <!-- Append data here in form of cards -->
+            </div>
+            <!-- Loader -->
             <div class="boxes">
                 <div class="box">
                     <div></div>
@@ -84,11 +80,21 @@
                     <div></div>
                 </div>
             </div>
+            <div id="add-member">
+                <div>
+                    <p>Add team members to the project</p>
+                </div>
+                <div>
+                    <input type="text" placeholder="Search by member's Name" id="search">
+                </div>
+                <hr>
+                <div id="container2">
+                    <!-- Append data here in form of cards -->
+                </div>
             </div>
         </div>
-
     </div>
 </body>
-<script src="./script/project.js"></script>
+<script src="./script/projectMembers.js"></script>
 
 </html>

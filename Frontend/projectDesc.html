@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/projectDesc.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="./styles/loader.css">
+    <title>Projects - Work Flow</title>
+</head>
+
+<body>
+    <!-- Side Panel -->
+    <div id="side-panel">
+        <div id="logo"><img src="./images/logo.png" alt="logo"></div>
+        <div onclick="location.href=`./dashboard.html`"><img src="./images/track.png" alt="track"> Track</div>
+        <div onclick="location.href=`./project.html`" style="background-color: #DEE2E6;"><img src="./images/project.png"
+                alt="projects"> Projects</div>
+        <div onclick="location.href=`./team.html`"><img src="./images/team.png" alt="team"> Team</div>
+        <div> <img src="./images/report.png" alt="reports"> Reports</div>
+        <div id="user">
+            <img src="./images/user.png" alt="user">
+            <!-- User Name Here-->
+            <div id="user-name"></div>
+        </div>
+    </div>
+
+    <div id="main-body">
+        <div id="child">
+            <div>
+                <h1 id="project-title">
+                    <!-- Project name -->
+
+                </h1>
+            </div>
+
+            <div id="main">
+                <div>
+                    <!-- Loader -->
+                    <div class="boxes">
+                        <div class="box">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <div class="box">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <div class="box">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <div class="box">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+                    <div id="task">
+                        <form>
+                            <input type="text" placeholder="Enter a task name" id="task-name" name="task" required />
+                            <label for="asign">Assigned to: </label>
+                            <input type="text" placeholder="Assign Members" id="assign" name="assign" required />
+                            <div id="member-box">
+                                <input type="text" id="search-member" placeholder="Search by name">
+                                <div id="admin"></div>
+                                <div id="member-data">
+                                    <!-- All member Data -->
+                                </div>
+                            </div>
+                            <input type="submit" value="Add this task" id="submit">
+                        </form>
+
+                    </div>
+                    <!-- Loader -->
+                    <div class="boxes">
+                        <div class="box">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <div class="box">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <div class="box">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <div class="box">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+                    <div id="task-list">
+                        <div>Task List</div>
+
+                        <div id="append-tasks">
+                            <!-- Append Data here -->
+                        </div>
+                    </div>
+
+                </div>
+                <div id="desc">
+                    <div>
+                        <div>
+                            <div class="title">Total hours</div>
+                            <div class="data" id="hours">0H</div>
+                        </div>
+                        <div>
+                            <div class="title">BILLABLE AMOUNT</div>
+                            <div class="data" id="bill">0H</div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div>
+                            <div class="title">BILLABLE HOURS</div>
+                            <div class="data" id="bill-hours">0H</div>
+                        </div>
+                        <div>
+                            <div class="title">COSTS</div>
+                            <div class="data" id="cost">0H</div>
+                        </div>
+                    </div>
+
+                    <hr>
+                    <div id="description" class="title">
+                        <!-- Description here -->
+                    </div>
+                    <hr>
+
+                    <div class="title">
+                        Hours are not rounded and billed with Project-based rate . Approvals are not required .
+                    </div>
+                    <div id="edit" onclick="location.href=`./projectMembers.html`">
+                        Edit Settings
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+<script src="./script/projectDesc.js"></script>
+
+</html>

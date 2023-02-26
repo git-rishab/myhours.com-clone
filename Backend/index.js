@@ -6,6 +6,7 @@ const {clientRoute} = require("./routes/client.routes");
 const {projectRoute} = require("./routes/project.routes");
 const {memberRoute} = require("./routes/member.routes");
 const {timeRoute} = require("./routes/time.routes");
+const {totalRoute} = require("./routes/total.routes");
 
 require("dotenv").config();
 const {authorisation} = require("./middlewares/jwt.middleware");
@@ -31,6 +32,8 @@ app.use("/project",projectRoute);
 app.use("/member",memberRoute);
 
 app.use("/time",timeRoute);
+
+app.use("/total",totalRoute);
 
 app.listen(process.env.port,async()=>{
     try {

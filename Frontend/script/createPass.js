@@ -11,33 +11,35 @@ document.onreadystatechange = function () {
 
 const url = `http://localhost:5000`;
 const form = document.querySelector("form");
+const userData = JSON.parse(localStorage.getItem("userData"));
+const token = localStorage.getItem("token");
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
-    let data = {
-        email: form.email.value,
-        password: form.pass.value
-    }
-    request(data);
+
+    userData.password = form.pass.value;
+    request(userData);
 
     async function request(userData) {
         try {
-            let req = await fetch(`${url}/user/login`, {
-                method: "POST",
+            let req = await fetch(`${url}/member/update`, {
+                method: "PATCH",
                 headers: {
                     "content-type": "application/json",
+                    "authorization": token
                 },
                 body: JSON.stringify(userData)
             })
             let res = await req.json();
             if (res.ok) {
-                localStorage.setItem("token",res.token);
-                localStorage.setItem("userData",JSON.stringify(res.userData));
-                if(res.userData.role == "admin"){
-                    document.location.href = "./dashboard.html";
-                } else{
-                    document.location.href = "./createPass.html";
-                }
+                Swal.fire(
+                    `Welcome To Work Flow`,
+                    '',
+                    'success'
+                )
+                setTimeout(()=>{
+                    document.location.href = "./memberDashboard.html";
+                },2500)
             } else{
                 Swal.fire({
                     icon: 'error',

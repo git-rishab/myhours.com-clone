@@ -1,8 +1,20 @@
+// Loader
+document.onreadystatechange = function () {
+    if (document.readyState !== "complete") {
+        document.querySelector("body").style.visibility = "hidden";
+        document.querySelector(".boxes").style.visibility = "visible";
+    } else {
+        document.querySelector(".boxes").style.display = "none";
+        document.querySelector("body").style.visibility = "visible";
+    }
+};
+
 const url = `http://localhost:5000/`;
 const token = localStorage.getItem("token");
 
 const dataContainer = document.getElementById("data-container");
 const search = document.getElementById("search");
+const userData = JSON.parse(localStorage.getItem("userData"));
 
 // Checking if user logged in
 if (!token) {
@@ -54,21 +66,40 @@ async function fetching() {
     }
 }
 
-function createDOM(data) {
+async function createDOM(data) {
     dataContainer.innerHTML = null;
 
     if (data.length == 0) {
         dataContainer.innerHTML = `<p id="no-project">Please Add Projects :(</p>`
         return;
     }
-
+    let req = await fetch(`${url}total/`,{
+        method: "POST",
+        headers: {
+            "content-type": "application/json",
+            "authorization": token
+        },
+        body:JSON.stringify(userData)
+    });
+    let res = await req.json();
+    let result = res.data.data;
+    // console.log(result);
     dataContainer.innerHTML = data.map((el, i) => {
+        let hour;
+        let bill;
+        if(result){
+            hour = result[el.name.split(" ").join("")].total
+            bill = result[el.name.split(" ").join("")].billAmt;
+        } else {
+            hour = "-"
+            bill = 0
+        }
         return `
         <div class="table card" data-id="${i}">
-            <div class="time">${el.name}</div>
+            <div class="time project-title"><u>${el.name}</u></div>
             <div class="time">${el.created}</div>
-            <div class="time bills">${el.billMethod}</div>
-            <div class="time bills">Total Hours</div>
+            <div class="time bills">₹${bill}</div>
+            <div class="time bills">${timeFormatting(hour)}H</div>
             <div class="time action" style="margin-right: 0px;">
                 <div class="edit">Edit</div>
                 <div class="delete">Delete</div>
@@ -76,6 +107,25 @@ function createDOM(data) {
         </div>`
     }).join("");
     editingData(data);
+    eventListener(data);
+}
+
+// Time Formatting Function
+function timeFormatting(sum) {
+    sum = sum + "";
+    if(sum == "-"){
+        return "00:00";
+    }
+    if (sum.length == 1) {
+        sum = `00:0${sum[0]}`;
+    } else if (sum.length == 2) {
+        sum = `00:${sum[0]}${sum[1]}`
+    } else if (sum.length == 3) {
+        sum = `0${sum[0]}:${sum[1]}${sum[2]}`;
+    } else {
+        sum = `${sum[0]}${sum[1]}:${sum[2]}${sum[3]}`;
+    }
+    return sum;
 }
 
 // Editing and Deleting Functionality
@@ -114,7 +164,6 @@ function editingData(data) {
                     )
                 }
             })
-
             // Deleting
             async function deleteRequest() {
                 try {
@@ -161,4 +210,17 @@ function seacrh(data) {
         });
         createDOM(newData);
     })
+}
+
+function eventListener(data){
+    const card = document.getElementsByClassName("card");
+    const name = document.getElementsByClassName("project-title")
+    for(let i = 0; i < data.length; i++){
+        card[i].addEventListener("click",()=>{
+            localStorage.setItem("projectData",JSON.stringify(data[card[i].dataset.id]));
+        })
+        name[i].addEventListener("click",()=>{
+            document.location.href = `./projectDesc.html`;
+        })
+    }
 }
