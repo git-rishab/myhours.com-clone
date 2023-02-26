@@ -9,10 +9,13 @@ document.onreadystatechange = function () {
     }
 };
 
+
 // Required variable Declarations
 const url = `http://localhost:5000/`;
 const userData = JSON.parse(localStorage.getItem("userData"));
-let token = localStorage.getItem("token");
+const token = localStorage.getItem("token");
+
+
 
 // Checking if user logged in
 if (!token) {
@@ -27,7 +30,7 @@ if (!token) {
     }, 2500)
 }
 
-document.getElementById("user-data").innerText = userData.name;
+document.getElementById("user-name").innerText = userData.name;
 
 let dt = new Date();
 let month = {
@@ -55,7 +58,6 @@ let week = {
 // Function Calls
 calender();
 dates();
-members();
 projects();
 gettingData();
 disableInputs();
@@ -132,10 +134,6 @@ function dates() {
     }
 }
 
-function members() {
-    let name = document.getElementById("userName");
-    name.innerHTML = `${userData.name}`;
-}
 
 // Creating and appending the data
 function createDomMember(data, cont, className, takeInput, boxToHide) {
@@ -159,12 +157,13 @@ function createDomMember(data, cont, className, takeInput, boxToHide) {
 // Get Request function
 async function fetching(route, className, container, searchCont, takeInput, boxToHide) {
     try {
-        let request = await fetch(`${url}${route}/`, {
-            method: "GET",
+        let request = await fetch(`${url}${route}/getProjects`, {
+            method: "POST",
             headers: {
                 "content-type": "application/json",
                 "authorization": token
-            }
+            },
+            body:JSON.stringify(userData)
         });
         var response = await request.json();
         createDomMember(response.data, container, className, takeInput, boxToHide);
@@ -188,24 +187,19 @@ async function fetching(route, className, container, searchCont, takeInput, boxT
     })
 }
 
-// Show total members
-document.getElementById("user2").addEventListener("click", () => {
-    let cont = document.getElementById("member-data");
-    let searchMember = document.getElementById("search-member");
-    let userName = document.getElementById("userName");
-    let box = document.getElementById("member-box");
-    box.style.visibility = "visible";
-    fetching("member", "names", cont, searchMember, userName, box);
-    boxVisibility("member-box", "user2", "#");
-})
 
 
 // Show Projects
 function projects() {
     let input = document.getElementsByClassName("first-col");
+    let tasks = document.getElementsByClassName("second-col");
+
     let cont = document.getElementById("project-box");
+    // let taskox = document.getElementById("task-box");
+
     let searchProject = document.getElementById("project-search");
     let projectOuterBox = document.getElementById("project-outer-box");
+    // let taskOuterBox = document.getElementById("task-outer-box");
 
     for (let i = 0; i < input.length; i++) {
         input[i].addEventListener("click", () => {
@@ -220,8 +214,6 @@ function projects() {
             boxVisibility("project-outer-box", "first-col", ".", input[i]);
         })
     }
-    input[0].disabled = false;
-
 }
 
 
@@ -232,7 +224,7 @@ function boxVisibility(boxToHide, exception, selector, enableTakingInput) {
     // Detect all clicks on the document
     document.addEventListener("click", (event) => {
         // If user clicks inside the element, do nothing
-        if (event.target.closest(`#${boxToHide}`) || event.target.closest(`${selector}${exception}`)) return
+        if (event.target.closest(`#${boxToHide}`) || event.target.closest(`${selector}${exception}`)) return;
         // If user clicks outside the element, hide it!
         box.style.visibility = "hidden"
         enableTakingInput.disabled = false;
@@ -432,14 +424,14 @@ function disableInputs() {
         })
     }
     inputs[0].disabled = false;
-    inputs[0].style.backgroundColor = "#ffffff"
+    inputs[0].style.backgroundColor = "#ffffff";
 }
 
 // Updating time at regular interval
-setInterval(() => {
-    updateTime();
-    total();
-}, 3000)
+// setInterval(() => {
+    // updateTime();
+    // total();
+// }, 3000)
 
 // Totaling the Times
 function totalling() {
@@ -485,7 +477,6 @@ function totalling() {
 
 // Time Formatting Function
 function timeFormatting(arrayOfChange,index,sum) {
-    
     sum = sum + "";
     if (sum.length == 1) {
         sum = `00:0${sum[0]}`;
@@ -511,7 +502,7 @@ document.getElementById("add").addEventListener("click",()=>{
     <td><input type="text" placeholder="hh:mm" class="day-time third"></td>
     <td><input type="text" placeholder="hh:mm" class="day-time forth"></td>
     <td><input type="text" placeholder="hh:mm" class="day-time fifth"></td>
-    <td class="total time total-time"></td>`
+    <td class="total time total-time add-time-total"></td>`
     table.append(tr);
 })
 
@@ -551,11 +542,11 @@ function total() {
         }
         return +sum;
     }
+
     fetchingTotal(timeStamps);
-    // console.log(timeStamps);
 
     async function fetchingTotal(total) {
-        let req = await fetch(`${url}total/`,{
+        let req = await fetch(`${url}total/totals`,{
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -565,39 +556,36 @@ function total() {
         })
         let res = await req.json();
         let id = res.data._id;
-        await fetch(`${url}total/update`,{
-            method: "PATCH",
-            headers: {
-                "content-type": "application/json",
-                "authorization": token
-            },
-            body:JSON.stringify({data:total,id:id})
-        })
-    }
-
-}
-
-function logOut() {
-    // Warning
-    Swal.fire({
-        title: 'Are you sure?',
-        text: "Log Out?",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes!'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            localStorage.clear();
-            Swal.fire(
-                'Log out successfull!',
-                '',
-                'success'
-            )
-            setTimeout(()=>{
-                document.location.href = "./index.html"
-            },2500)
+        // console.log(res.data.data);
+        for(let key in total){
+            if(res.data.data){
+                if(res.data.data[key]){
+                    res.data.data[key].total += total[key].total
+                }
+            }
         }
-    })
+        if(res.data.data){
+            await fetch(`${url}total/update`,{
+                method: "PATCH",
+                headers: {
+                    "content-type": "application/json",
+                    "authorization": token
+                },
+                body:JSON.stringify({data:res.data.data,id:id})
+            })
+
+        } else {
+            await fetch(`${url}total/update`,{
+                method: "PATCH",
+                headers: {
+                    "content-type": "application/json",
+                    "authorization": token
+                },
+                body:JSON.stringify({data:total,id:id})
+            })
+        }
+    }
 }
+document.getElementById("sub").addEventListener("click",()=>{
+    total();
+})

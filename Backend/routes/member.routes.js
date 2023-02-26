@@ -15,7 +15,7 @@ memberRoute.get("/",async(req,res)=>{
     }
 })
 
-// Add new Client
+// Add new Member
 memberRoute.post("/create",async(req,res)=>{
     try {
         let check = await UserModel.find({email:req.body.email});
@@ -46,7 +46,6 @@ memberRoute.patch("/update",async(req,res)=>{
 })
 
 // Deleteing Details
-
 memberRoute.delete("/delete",async(req,res)=>{
     try {
         await MemberModel.findByIdAndDelete({_id:req.body._id});

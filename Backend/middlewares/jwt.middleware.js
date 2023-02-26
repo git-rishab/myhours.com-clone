@@ -9,7 +9,11 @@ const authorisation = (req,res,next)=>{
             res.send({"msg":"Please Login First"});
         }
         if(decoded){
-            req.body.userID = decoded.userID;
+            if(decoded.userID){
+                req.body.userID = decoded.userID;
+            } else {
+                req.body.memebrID = decoded.memebrID;
+            }
             next();
         } else {
             res.send({"msg":"Please Login First"});

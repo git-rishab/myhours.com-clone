@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/addTeam.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="./styles/loader.css">
     <title>Edit team members - Work Flow</title>
 </head>
+
 <body>
     <!-- Side Panel -->
     <div id="side-panel">
         <div id="logo"><img src="./images/logo.png" alt="logo"></div>
         <div onclick="location.href=`./dashboard.html`"><img src="./images/track.png" alt="track"> Track</div>
         <div onclick="location.href=`./project.html`"><img src="./images/project.png" alt="projects"> Projects</div>
-        <div onclick="location.href=`./team.html`" style="background-color: #DEE2E6;"><img src="./images/team.png" alt="team"> Team</div>
+        <div onclick="location.href=`./team.html`" style="background-color: #DEE2E6;"><img src="./images/team.png"
+                alt="team"> Team</div>
         <div onclick="location.href=`./reports.html`"> <img src="./images/report.png" alt="reports"> Reports</div>
         <div id="user">
             <img src="./images/user.png" alt="user">
@@ -25,14 +29,43 @@
 
     <div id="main-body">
         <div id="child">
-            <div><h1>Edit Team member</h1></div>
+            <div>
+                <h1>Edit Team member</h1>
+            </div>
             <form>
                 <label for="name"> <span>NAME</span></label>
-                <input type="text" name="name" id="name" placeholder="Enter name of the member" required/>
+                <input type="text" name="name" id="name" placeholder="Enter name of the member" required />
 
                 <label for="email"><span>EMAIL</span></label>
-                <input type="email" name="email" placeholder="Enter Email of the member" required/>
+                <input type="email" name="email" placeholder="Enter Email of the member" required />
                 <hr style="margin-bottom: 20px;">
+                <!-- Loader -->
+                <div class="boxes">
+                    <div class="box">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="box">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="box">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="box">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
 
                 <!-- Role -->
                 <div class="bill">
@@ -40,16 +73,16 @@
                         Role
                     </div>
                     <div class="bill-child roles">
-                       <h4>Admin</h4>
-                       <p>Can view and edit anything in group or workspace.</p>
+                        <h4>Admin</h4>
+                        <p>Can view and edit anything in group or workspace.</p>
                     </div>
                     <div class="bill-child roles">
                         <h4>Manager</h4>
-                       <p>Can view and manage assigned projects. Cannot view other projects.</p>
+                        <p>Can view and manage assigned projects. Cannot view other projects.</p>
                     </div>
                     <div class="bill-child roles">
                         <h4>Normal</h4>
-                       <p>Can only track time on assigned projects / tasks.</p>
+                        <p>Can only track time on assigned projects / tasks.</p>
                     </div>
                 </div>
                 <hr style="margin: 20px 0px;">
@@ -60,11 +93,12 @@
                         Labor Rate
                     </div>
 
-                    <p>Enter default hourly rate for the team member to calculate Labor cost. This rate can be further specified on individual projects.</p>
+                    <p>Enter default hourly rate for the team member to calculate Labor cost. This rate can be further
+                        specified on individual projects.</p>
 
                     <div class="bill-child rate">
                         <div>INR</div>
-                        <div><input type="number" name="laborRate" class="rates" required/></div>
+                        <div><input type="number" name="laborRate" class="rates" required /></div>
                     </div>
                 </div>
 
@@ -74,11 +108,12 @@
                         Billable Rate
                     </div>
 
-                    <p>Enter default billable rate for the team member to calculate Billable cost. This rate can be further specified on individual projects.</p>
+                    <p>Enter default billable rate for the team member to calculate Billable cost. This rate can be
+                        further specified on individual projects.</p>
 
                     <div class="bill-child rate">
                         <div>INR</div>
-                        <div><input type="number" name="billableRate" class="rates" required/></div>
+                        <div><input type="number" name="billableRate" class="rates" required /></div>
                     </div>
                 </div>
 
@@ -91,4 +126,5 @@
     </div>
 </body>
 <script src="./script/editTeam.js"></script>
+
 </html>

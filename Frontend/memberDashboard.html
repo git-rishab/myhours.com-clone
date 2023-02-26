@@ -10,19 +10,18 @@
     <link rel="stylesheet" href="./styles/loader.css">
     <title>Weekly Timesheet - Work Flow</title>
 </head>
+
 <body>
     <!-- Side Panel -->
     <div id="side-panel">
         <div id="logo"><img src="./images/logo.png" alt="logo"></div>
         <div onclick="location.href=`./dashboard.html`" style="background-color: #DEE2E6;"><img src="./images/track.png"
                 alt="track"> Track</div>
-        <div onclick="location.href=`./project.html`"><img src="./images/project.png" alt="projects"> Projects</div>
-        <div onclick="location.href=`./team.html`"><img src="./images/team.png" alt="team"> Team</div>
-        <div> <img src="./images/report.png" alt="reports"> Reports</div>
+
         <div id="user">
             <img src="./images/user.png" alt="user">
             <!-- User Name Here-->
-            <div id="user-data" onclick="logOut()"></div>
+            <span id="user-name"></span>
         </div>
     </div>
 
@@ -45,17 +44,6 @@
                             src="./images/right-arrow.png" alt=""></div>
                 </div>
 
-                <div id="user2">
-                    <div class="calender"><img src="./images/user.png" alt="user"></div>
-                    <div id="userName"> <!-- User name --></div>
-                </div>
-                <div id="member-box">
-                    <input type="text" id="search-member" placeholder="Search by name">
-                    <div id="admin"></div>
-                    <div id="member-data">
-                        <!-- All member Data -->
-                    </div>
-                </div>
             </div>
             <hr style="color: #DEE2E6;">
 
@@ -65,23 +53,23 @@
                 <!-- Data inject from data entered and date -->
                 <div class="time-data">
                     <div class="date"></div>
-                    <div class="time time-append"></div>
+                    <div class="time time-append">00:00</div>
                 </div>
                 <div class="time-data">
                     <div class="date"></div>
-                    <div class="time time-append"></div>
+                    <div class="time time-append">00:00</div>
                 </div>
                 <div class="time-data">
                     <div class="date"></div>
-                    <div class="time time-append"></div>
+                    <div class="time time-append">00:00</div>
                 </div>
                 <div class="time-data">
                     <div class="date"></div>
-                    <div class="time time-append"></div>
+                    <div class="time time-append">00:00</div>
                 </div>
                 <div class="time-data">
                     <div class="date"></div>
-                    <div class="time time-append"></div>
+                    <div class="time time-append">00:00</div>
                 </div>
                 <div class="time-data">
                     <div class="time" style="font-weight: 500;">Total Budget</div>
@@ -90,34 +78,37 @@
             </div>
 
             <hr>
-            <div id="table-data">
-                <!-- Loader -->
-                <div class="boxes">
-                    <div class="box">
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                    </div>
-                    <div class="box">
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                    </div>
-                    <div class="box">
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                    </div>
-                    <div class="box">
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                    </div>
+
+            <!-- Loader -->
+            <div class="boxes">
+                <div class="box">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
                 </div>
+                <div class="box">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="box">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="box">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+
+
+            <div id="table-data">
                 <table>
                     <tr>
                         <td><input type="text" placeholder="Project Name" class="first-col"></td>
@@ -125,6 +116,33 @@
                             <input type="text" placeholder="Search by project name" id="project-search">
                             <div id="project-box">
                                 <!-- Append project data -->
+                                <!-- Loader -->
+                                <div class="boxes">
+                                    <div class="box">
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                    </div>
+                                    <div class="box">
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                    </div>
+                                    <div class="box">
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                    </div>
+                                    <div class="box">
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <td><input type="text" placeholder="Task" class="second-col"></td>
@@ -188,8 +206,10 @@
                 </table>
                 <div id="add"><u>+ Add Timesheet row</u></div>
             </div>
+            <div style="width: 100%; height: 300px;" id="sub"></div>
         </div>
     </div>
 </body>
-<script src="./script/dashboard.js"></script>
+<script src="./script/memberDashboard.js"></script>
+
 </html>

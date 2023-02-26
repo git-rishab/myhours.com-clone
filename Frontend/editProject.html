@@ -29,9 +29,8 @@
 
     <div id="main-body">
         <div id="child">
-            
             <div>
-                <h1>Add project</h1>
+                <h1>Edit project</h1>
             </div>
             <form>
                 <label for="name"> <span>NAME</span></label>
@@ -40,32 +39,32 @@
                 <label for="comment"><span>DESCRIPTION</span></label>
                 <textarea rows="4" cols="50" name="comment" placeholder="Enter Project Description"></textarea>
                 <!-- Loader -->
-            <div class="boxes">
-                <div class="box">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
+                <div class="boxes">
+                    <div class="box">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="box">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="box">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="box">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
                 </div>
-                <div class="box">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
-                <div class="box">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
-                <div class="box">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
-            </div>
                 <div id="bill">
                     <div>
                         Billable Settings
@@ -91,17 +90,17 @@
                         <h5 id="h5"></h5>
                         <p id="billable-rate">
                             <!-- Inject the Data here here -->
-
                         </p>
                     </div>
                 </div>
-                <input type="submit" value="Create project" id="submit">
+                <input type="submit" value="Update Project" id="submit">
+                <div id="cancel" onclick="location.href=`./project.html`">Cancel</div>
             </form>
 
         </div>
 
     </div>
 </body>
-<script src="./script/addProject.js"></script>
+<script src="./script/editProject.js"></script>
 
 </html>

@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const memberSchema = mongoose.Schema({
     name:String,
     email:String,
+    password:String,
     role:String,
     labourRate:Number,
     billableRate:Number,
